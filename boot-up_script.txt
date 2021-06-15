@@ -3,16 +3,12 @@
 # Author: Armel Jeubou
 # Date: 6/10/2021
 
-
-
 echo -e "checking connectivity "
-
 ping -c 4 google.com
 
 sleep 2
 echo " "
 echo -e "installing epel-release "
-
 yum install epel-release
 
 sleep 2
