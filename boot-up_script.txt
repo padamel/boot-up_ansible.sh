@@ -1,0 +1,46 @@
+# This script will launch the installation of the Epel-release package
+# Install the Ansible services
+# Author: Armel Jeubou
+# Date: 6/10/2021
+
+
+
+echo -e "checking connectivity "
+
+ping -c 4 google.com
+
+sleep 2
+echo " "
+echo -e "installing epel-release "
+
+yum install epel-release
+
+sleep 2
+echo " "
+echo -e "installing the language on which Ansible is written: python "
+yum install python
+
+echo " "
+sleep 2
+yum install python-pip
+
+echo " "
+echo -e "checking if OS is Centos6 or Centos7 "
+
+for n in OS_type
+do
+cat /etc/*release
+done
+
+sleep 2
+echo -e "installing Ansible "
+
+if [ {$? -ne 0 } ]
+then
+echo -e "rerun the previous command "
+else
+sleep 1
+yum install ansible -y
+exit
+fi
+
